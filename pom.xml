@@ -17,7 +17,9 @@
         <module>day1-helloSeverWithServelt</module>
         <module>day1-helloClientServelt</module>
         <module>day1-calculatorServelt</module>
-        <module>day-calculatorClientServelt</module>
+        <module>day1-crudOperationServerWithServelt</module>
+        <module>day1-caclulatorClientWithServelt</module>
+        <module>day1-crudOperationClientWithServelt</module>
     </modules>
     <packaging>pom</packaging>
     <properties>
