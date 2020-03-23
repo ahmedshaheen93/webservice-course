@@ -5,11 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.shaheen</groupId>
-    <artifactId>day1-helloSeverWithServelt</artifactId>
+    <artifactId>day1-calculatorServelt</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
 
-    <name>day1-helloSeverWithServelt Maven Webapp</name>
+    <name>day1-calculatorServelt Maven Webapp</name>
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
@@ -73,7 +73,7 @@
                 <configuration>
                     <url>http://localhost:8080/manager/text</url>
                     <server>TomcatServer</server>
-                    <path>/Test</path>
+                    <path>/calculator</path>
                 </configuration>
                 <executions>
                     <execution>
