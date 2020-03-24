@@ -20,6 +20,7 @@
         <module>day1-crudOperationServerWithServelt</module>
         <module>day1-caclulatorClientWithServelt</module>
         <module>day1-crudOperationClientWithServelt</module>
+        <module>day1-helloRest</module>
     </modules>
     <packaging>pom</packaging>
     <properties>
