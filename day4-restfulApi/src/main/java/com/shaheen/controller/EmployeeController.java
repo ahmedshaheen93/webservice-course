@@ -41,8 +41,9 @@ public class EmployeeController {
 
     @POST
     public Response add(Employee employee) {
-        employee = employeeService.save(employee);
+        System.out.println("post called");
 
+        employee = employeeService.save(employee);
         GenericEntity<Employee> entity = new GenericEntity<>(employee, Employee.class);
         return Response.status(Response.Status.CREATED).entity(entity).build();
 
@@ -50,6 +51,7 @@ public class EmployeeController {
 
     @PUT
     public Response update(Employee employee) {
+        System.out.println("put called");
         employee = employeeService.save(employee);
         GenericEntity<Employee> entity = new GenericEntity<>(employee, Employee.class);
         return Response.status(Response.Status.OK).entity(entity).build();

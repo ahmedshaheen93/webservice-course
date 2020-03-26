@@ -8,11 +8,16 @@ import javax.ws.rs.core.Response;
 
 public class RestClient {
 
-    private static final String REST_URI = "http://localhost:8080/day4_restfulApi_war/api/v1/employees";
+    private static final String REST_URI = "http://localhost:8080/server/api/v1/employees";
     private Client client = ClientBuilder.newClient();
 
     public Response createJsonEmployee(Employee emp) {
         return client.target(REST_URI).request(MediaType.APPLICATION_JSON).post(Entity.entity(emp, MediaType.APPLICATION_JSON));
+    }
+
+    public Response updateJsonEmployee(Employee emp) {
+        System.out.println("update on client");
+        return client.target(REST_URI).request(MediaType.APPLICATION_JSON).put(Entity.entity(emp, MediaType.APPLICATION_JSON));
     }
 
     public Response getJsonEmployee(int id) {

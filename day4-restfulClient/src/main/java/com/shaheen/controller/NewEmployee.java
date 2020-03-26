@@ -1,8 +1,5 @@
 package com.shaheen.controller;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.shaheen.Employee;
 import com.shaheen.RestClient;
 
@@ -12,28 +9,25 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.Response;
 import java.io.IOException;
 import java.util.List;
 
 @WebServlet("/newEmployee")
-public class SaveEmployee extends HttpServlet {
+public class NewEmployee extends HttpServlet {
     RestClient restClient = new RestClient();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Response allJsonEmployee = restClient.getAllJsonEmployee();
-        String jsonEmployees = allJsonEmployee.readEntity(String.class);
-        ObjectMapper objectMapper = new ObjectMapper();
-        try {
-            List<Employee> employees = objectMapper.readValue(jsonEmployees, new TypeReference<List<Employee>>() {
-            });
-            System.out.println(employees);
-            if (employees != null)
-                req.setAttribute("employees", employees);
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
+        List<Employee> employees = allJsonEmployee.readEntity(new GenericType<>() {
+        });
+        System.out.println(employees);
+        if (employees != null) {
+            req.setAttribute("employees", employees);
         }
+
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("index.jsp");
         requestDispatcher.include(req, resp);
     }
