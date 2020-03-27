@@ -16,7 +16,7 @@
         <div>
             <form action="/client/employee" method="post">
                 <label for="empID">enter employee id</label>
-                <input type="number" id="empID" name="id">
+                <input type="number" id="empID" name="empID">
                 <input type="submit" value="search for employee">
             </form>
         </div>
@@ -93,7 +93,7 @@
                 <%
                     if (request.getAttribute("employeeAdded") != null) {%>
                 <p style="color: green;">
-                    <%System.out.println(request.getAttribute("employeeAdded"));%>
+                    <%=request.getAttribute("employeeAdded")%>
                 </p>
                 <%
                     }
@@ -101,7 +101,7 @@
                 <%
                     if (request.getAttribute("erorrOnAdd") != null) {%>
                 <p style="color: red;">
-                    <%System.out.println(request.getAttribute("erorrOnAdd"));%>
+                    <%=request.getAttribute("erorrOnAdd")%>
                 </p>
                 <%
                     }
@@ -137,7 +137,7 @@
                     String employeeUpdated = (String) request.getAttribute("employeeUpdated");
                     if (employeeUpdated != null) {%>
                 <p style="color: green;">
-                    <%System.out.println(employeeUpdated);%>
+                    <%=employeeUpdated%>
                 </p>
                 <%
                     }
@@ -145,7 +145,7 @@
                 <%
                     if (request.getAttribute("erorrOnUpdate") != null) {%>
                 <p style="color: red;">
-                    <%System.out.println(request.getAttribute("erorrOnUpdate"));%>
+                    <%=request.getAttribute("erorrOnUpdate")%>
                 </p>
                 <%
                     }

@@ -59,4 +59,16 @@ public class Employee {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    @Override
+    public String toString() {
+        return "{" +
+                "\"id\":" + id +
+                ", \"firstName\":\"" + firstName + '\"' +
+                ", \"lastName\":\"" + lastName + '\"' +
+                ", \"phone\":\"" + phone + '\"' +
+                ", \"email\":\"" + email + '\"' +
+                ", \"password\":\"" + password + '\"' +
+                '}';
+    }
 }

@@ -16,7 +16,7 @@
         <div>
             <form action="/client/employee" method="post">
                 <label for="empID">enter employee id</label>
-                <input type="number" id="empID" name="id">
+                <input type="number" id="empID" name="empID">
                 <input type="submit" value="search for employee">
             </form>
         </div>
@@ -35,14 +35,14 @@
             <td scope="col">phone</td>
             </thead>
             <tbody>
-            <tr>
-                <td scope="row"><%=employee.getFirstName()%>
+            <tr scope="row">
+                <td><%=employee.getFirstName()%>
                 </td>
-                <td scope="row"><%=employee.getLastName()%>
+                <td><%=employee.getLastName()%>
                 </td>
-                <td scope="row"><%=employee.getEmail()%>
+                <td><%=employee.getEmail()%>
                 </td>
-                <td scope="row"><%=employee.getPhone()%>
+                <td><%=employee.getPhone()%>
                 </td>
             </tr>
             </tbody>

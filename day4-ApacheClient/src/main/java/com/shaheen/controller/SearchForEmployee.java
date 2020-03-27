@@ -25,11 +25,12 @@ public class SearchForEmployee extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String id = req.getParameter("empID");
+        System.out.println("id = " + id);
         RestClient restClient = new RestClient();
         if (id != null) {
             HttpResponse jsonEmployee = restClient.getJsonEmployee(Integer.parseInt(id.trim()));
             if (jsonEmployee != null && jsonEmployee.getStatusLine().getStatusCode() == 200) {
-                Employee employee = new Utility<Employee>().map(jsonEmployee, new TypeReference<Employee>() {
+                Employee employee = new Utility<Employee>().map(jsonEmployee, new TypeReference<>() {
                 });
                 System.out.println(employee);
                 if (employee != null && employee.getId() > 0) {

@@ -29,12 +29,4 @@ public class RestClient {
         return client.target(REST_URI).request(MediaType.APPLICATION_JSON)
                 .get();
     }
-
-    public Response createXmlEmployee(Employee emp) {
-        return client.target(REST_URI).request(MediaType.APPLICATION_XML).post(Entity.entity(emp, MediaType.APPLICATION_XML));
-    }
-
-    public Employee getXmlEmployee(int id) {
-        return client.target(REST_URI).path(String.valueOf(id)).request(MediaType.APPLICATION_XML).get(Employee.class);
-    }
 }
