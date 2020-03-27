@@ -24,6 +24,7 @@
         <module>day3-calculationWithRest</module>
         <module>day4-restfulApi</module>
         <module>day4-restfulClient</module>
+        <module>day4-restfulAsycClient</module>
     </modules>
     <dependencies>
         <dependency>

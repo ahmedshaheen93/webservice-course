@@ -25,11 +25,13 @@ public class SearchForEmployee extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String id = req.getParameter("empID");
         RestClient restClient = new RestClient();
-        Response jsonEmployee = restClient.getJsonEmployee(Integer.valueOf(id));
-        Employee employee = jsonEmployee.readEntity(new GenericType<>() {
-        });
-        if (employee != null && employee.getId() > 0) {
-            req.setAttribute("employee", employee);
+        if (id != null) {
+            Response jsonEmployee = restClient.getJsonEmployee(Integer.parseInt(id.trim()));
+            Employee employee = jsonEmployee.readEntity(new GenericType<>() {
+            });
+            if (employee != null && employee.getId() > 0) {
+                req.setAttribute("employee", employee);
+            }
         }
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("index.jsp");
         requestDispatcher.include(req, resp);
