@@ -5,7 +5,9 @@ import com.shaheen.response.ResponseMessage;
 import com.shaheen.service.EmployeeService;
 import com.shaheen.service.EmployeeServiceImpl;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.*;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.GenericEntity;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -17,10 +19,11 @@ public class EmployeeController {
     EmployeeService employeeService = new EmployeeServiceImpl();
 
     @GET
-    public Response get() {
-
+    public Response get(@Context HttpServletRequest request) {
+        System.out.println("session id = " + request.getSession().getId());
+        System.out.println("get called ");
         List<Employee> all = employeeService.findAll();
-        GenericEntity<List<Employee>> entity = new GenericEntity<List<Employee>>(all) {
+        GenericEntity<List<Employee>> entity = new GenericEntity<>(all) {
         };
         return Response.ok().entity(entity).build();
 
@@ -30,7 +33,9 @@ public class EmployeeController {
     @GET
     @Path("/{id}")
     @Produces({MediaType.APPLICATION_JSON, MediaType.TEXT_HTML})
-    public Response getById(@PathParam("id") int id) {
+    public Response getById(@PathParam("id") int id, @Context HttpServletRequest request) {
+        System.out.println("session id = " + request.getSession().getId());
+        System.out.println("getById called ");
         if (id < 0) {
             return Response.noContent().build();
         }
@@ -40,9 +45,9 @@ public class EmployeeController {
     }
 
     @POST
-    public Response add(Employee employee) {
-        System.out.println("post called");
-
+    public Response add(Employee employee, @Context HttpServletRequest request) {
+        System.out.println("session id = " + request.getSession().getId());
+        System.out.println("add called ");
         employee = employeeService.save(employee);
         GenericEntity<Employee> entity = new GenericEntity<>(employee, Employee.class);
         return Response.status(Response.Status.CREATED).entity(entity).build();
@@ -50,8 +55,9 @@ public class EmployeeController {
     }
 
     @PUT
-    public Response update(Employee employee) {
-        System.out.println("put called");
+    public Response update(Employee employee, @Context HttpServletRequest request) {
+        System.out.println("session id = " + request.getSession().getId());
+        System.out.println("update called ");
         employee = employeeService.save(employee);
         GenericEntity<Employee> entity = new GenericEntity<>(employee, Employee.class);
         return Response.status(Response.Status.OK).entity(entity).build();
@@ -59,8 +65,10 @@ public class EmployeeController {
 
     @DELETE
     @Path("/{id}")
-    public ResponseMessage delete(@PathParam("id") int id) {
-        System.out.println("del called");
+    public ResponseMessage delete(@PathParam("id") int id, @Context HttpServletRequest request) {
+        System.out.println("session id = " + request.getSession().getId());
+        System.out.println("delete called ");
+
         return employeeService.delete(id);
     }
 }
